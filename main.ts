@@ -1,4 +1,4 @@
-//% blockGap=8 block="screen capture"
+//% blockGap=8 block="screen capture" rotating screen unsupported yet
 namespace screenCapture {
     //% blockId=screenCaptureCreateCaptureScreenImageSprite 
     //% block="create capture screen image sprite"
@@ -18,8 +18,7 @@ namespace screenCapture {
     export function __captureImageDataInScreen160x120(): Sprite {
         const sprite = new Sprite(getImage())
         game.currentScene().physicsEngine.addSprite(sprite)
-        // shift screen and update 
-        shiftScreen(sprite)
+        // shift screen and update
         return sprite
     }
 
@@ -31,17 +30,11 @@ namespace screenCapture {
                 img.setPixel(x, y, color) // blits the sprites first position and makes the copied one static
             }
 
-        // game.onUpdate(() => {
-        //     for (let y = 0; y < screen.height; y++)
-        //         for (let x = 0; x < screen.width; x++) {
-        //             let color = screen.getPixel(x, y)
-        //             img.setPixel(x += 1, y += 1, color) // blits the sprites first position and makes the copied one static
-        //         }  
-        // })
         return img
     }
 
-    function shiftScreen(sprite: Sprite) {
+  //% block="shift sprite %sprite=variables_get(sprite)"
+  export function shiftScreen(sprite: Sprite) {
         game.onUpdate(() => {
             sprite.setImage(screen)
         })
