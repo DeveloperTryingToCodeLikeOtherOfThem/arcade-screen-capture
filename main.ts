@@ -23,6 +23,10 @@ namespace screenCapture {
     }
 
     function getImage(): Image {
+        scene.createRenderable(-1, () => {
+            screen.fill(scene.backgroundColor()) // this is a hack
+        })
+
         let img: Image = image.create(screen.width, screen.height) as ScreenImage
         for (let y = 0; y < screen.height; y++)
             for (let x = 0; x < screen.width; x++) {
