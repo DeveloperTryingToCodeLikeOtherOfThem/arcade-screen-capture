@@ -49,10 +49,14 @@ namespace screenCapture {
      * Needed this function to pause the screen full control to make it working  
      @param ms means the number of milliseconds ordered for the screen paused for getting the scren captured 
      needs to pause the screen so the screen delays sometime before exactly gets the empty source instead of the real data
+     Deprecated: do not use it now
      */
-    //% weight=98
+    //% weight=98 deprecated=1
     export function pause(ms: number) {
         if (ms >= 5000) throw "too long pause"
         loops.pause(ms)
     }
+
+    pause(0) // were pausing so before the screen actually really took a capture of the blank 0 data image it got after that happened
 }
+
