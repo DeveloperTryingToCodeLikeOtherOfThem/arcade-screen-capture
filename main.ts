@@ -8,7 +8,7 @@ namespace screenCapture {
         const sprite: Sprite = new Sprite(getImage())
         game.currentScene().physicsEngine.addSprite(sprite)
         // shift screen and update 
-        shiftScreen(sprite)
+        // shiftScreen(sprite)
         return sprite
     }
 
@@ -37,8 +37,12 @@ namespace screenCapture {
         return img
     }
 
-  //% block="shift sprite %sprite=variables_get(sprite)"
-  export function shiftScreen(sprite: Sprite) {
+  //% block="shift sprite %sprite=variables_get(sprite)" deprecated=1
+  //% blockHidden=true
+  /**
+   * DEPRECATED: this caused many problems so just do not use it for now.
+   */
+  export function __shiftScreen(sprite: Sprite) {
         game.onUpdate(() => {
             sprite.setImage(screen)
         })
