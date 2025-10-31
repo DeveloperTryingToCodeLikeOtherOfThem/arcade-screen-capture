@@ -23,15 +23,15 @@ namespace screenCapture {
     }
 
     function getImage(): Image {
-        scene.createRenderable(-1, () => {
-            screen.fill(scene.backgroundColor()) // this is a hack
-        })
-
         pause(0) // were pausing so before the screen actually really took a capture of the blank 0 data image it got after that happened
        
         if (game.currentScene().tileMap && game.currentScene().tileMap.enabled)
         game.currentScene().tileMap.addEventListener(tiles.TileMapEvent.Loaded, data => {
          if (data.getTileset().length === 0 || util.dataIsUnstabled) throw "fixing why no tile data exists in screen later"
+        })
+
+        scene.createRenderable(-1, () => {
+            screen.fill(scene.backgroundColor()) // this is a hack
         })
 
         let img: Image = image.create(screen.width, screen.height) as ScreenImage
