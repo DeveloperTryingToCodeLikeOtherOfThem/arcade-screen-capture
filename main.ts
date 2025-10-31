@@ -27,6 +27,8 @@ namespace screenCapture {
             screen.fill(scene.backgroundColor()) // this is a hack
         })
 
+        pause(0) // were pausing so before the screen actually really took a capture of the blank 0 data image it got after that happened
+       
         let img: Image = image.create(screen.width, screen.height) as ScreenImage
         for (let y = 0; y < screen.height; y++)
             for (let x = 0; x < screen.width; x++) {
@@ -60,7 +62,5 @@ namespace screenCapture {
         if (ms >= 5000) throw "too long pause"
         loops.pause(ms)
     }
-
-    pause(0) // were pausing so before the screen actually really took a capture of the blank 0 data image it got after that happened
 }
 
