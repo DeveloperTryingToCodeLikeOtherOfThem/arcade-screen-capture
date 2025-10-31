@@ -27,11 +27,11 @@ namespace screenCapture {
             screen.fill(scene.backgroundColor()) // this is a hack
         })
 
-        pause(1000) // were pausing so before the screen actually really took a capture of the blank 0 data image it got after that happened
+        pause(0) // were pausing so before the screen actually really took a capture of the blank 0 data image it got after that happened
        
         if (game.currentScene().tileMap && game.currentScene().tileMap.enabled)
-        game.currentScene().tileMap.addEventListener(tiles.TileMapEvent.Unloaded, data => {
-          throw "tilemap unloaded unexpectly"
+        game.currentScene().tileMap.addEventListener(tiles.TileMapEvent.Loaded, data => {
+         if (data.getTileset().length === 0 || util.dataIsUnstabled) throw "fixing why no tile data exists in screen later"
         })
 
         let img: Image = image.create(screen.width, screen.height) as ScreenImage
@@ -66,6 +66,12 @@ namespace screenCapture {
     export function pause(ms: number) {
         if (ms >= 5000) throw "too long pause"
         loops.pause(ms)
+    }
+
+    namespace util {
+        export function dataIsUnstabled(tm: tiles.TileMapData): tm is null | undefined{
+            return (tm === undefined || tm === null) 
+        }
     }
 }
 
