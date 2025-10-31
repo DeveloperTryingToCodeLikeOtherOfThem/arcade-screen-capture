@@ -27,8 +27,13 @@ namespace screenCapture {
             screen.fill(scene.backgroundColor()) // this is a hack
         })
 
-        pause(0) // were pausing so before the screen actually really took a capture of the blank 0 data image it got after that happened
+        pause(1000) // were pausing so before the screen actually really took a capture of the blank 0 data image it got after that happened
        
+        if (game.currentScene().tileMap && game.currentScene().tileMap.enabled)
+        game.currentScene().tileMap.addEventListener(tiles.TileMapEvent.Unloaded, data => {
+          throw "tilemap unloaded unexpectly"
+        })
+
         let img: Image = image.create(screen.width, screen.height) as ScreenImage
         for (let y = 0; y < screen.height; y++)
             for (let x = 0; x < screen.width; x++) {
