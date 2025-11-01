@@ -1,8 +1,10 @@
 //% blockGap=8 block="screen capture" rotating screen unsupported yet
+// icon ref from other screen-capture 
+//% icon="\uf03d"
 namespace screenCapture {
     //% blockId=screenCaptureCreateCaptureScreenImageSprite 
     //% block="create capture screen image sprite"
-    //%  blockSetVariable=myScreenCaptureSprite
+    //% blockSetVariable=myScreenCaptureSprite
     //% weight=100
     export function createCaptureScreenImageSprite(): Sprite {
         const sprite: Sprite = new Sprite(getImage())
